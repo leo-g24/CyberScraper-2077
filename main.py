@@ -1,3 +1,13 @@
+import os
+import subprocess
+
+# Force l'installation des navigateurs Playwright au lancement
+try:
+    import playwright
+except ImportError:
+    subprocess.run(["pip", "install", "playwright"])
+    subprocess.run(["python", "-m", "playwright", "install", "chromium"])
+    
 import warnings
 
 # Suppress Pydantic V1 warning - upstream LangChain issue with Python 3.14
