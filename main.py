@@ -1,12 +1,14 @@
 import os
 import subprocess
 
-# Force l'installation des navigateurs Playwright au lancement
+# Bloc d'installation forcée au démarrage
 try:
     import playwright
 except ImportError:
     subprocess.run(["pip", "install", "playwright"])
-    subprocess.run(["python", "-m", "playwright", "install", "chromium"])
+
+# Cette ligne télécharge les navigateurs et les dépendances système manquantes
+subprocess.run(["python", "-m", "playwright", "install", "chromium", "--with-deps"])
     
 import warnings
 
