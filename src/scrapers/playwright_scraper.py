@@ -24,13 +24,8 @@ from ..utils.error_handler import ErrorMessages
 
 
 def _get_browser_channel():
-    """Get browser channel based on platform. Chrome not available on ARM64 Linux."""
-    system = platform.system().lower()
-    machine = platform.machine().lower()
-    # Chrome is not available for Linux ARM64 (e.g., Docker on Apple Silicon)
-    if system == "linux" and machine in ("aarch64", "arm64"):
-        return None  # Use default chromium
-    return "chrome"  # Use Chrome for better stealth on x86/macOS/Windows
+    """Force None to use Chromium on Streamlit Linux servers."""
+    return None
 
 
 class ScraperConfig:
