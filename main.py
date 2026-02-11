@@ -1,14 +1,8 @@
 import os
 import subprocess
 
-# Bloc d'installation forcée au démarrage
-try:
-    import playwright
-except ImportError:
-    subprocess.run(["pip", "install", "playwright"])
-
-# Cette ligne télécharge les navigateurs et les dépendances système manquantes
-subprocess.run(["python", "-m", "playwright", "install", "chromium", "--with-deps"])
+# On installe juste le binaire de navigation, sans demander le sudo
+subprocess.run(["python", "-m", "playwright", "install", "chromium"])
     
 import warnings
 
